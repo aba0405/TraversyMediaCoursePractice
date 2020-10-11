@@ -12,6 +12,17 @@ import TextField from '@material-ui/core/TextField'
 import {makeStyles, ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 
 import {orange, green} from '@material-ui/core/colors'
+import 'fontsource-roboto'
+import Typography from '@material-ui/core/Typography'
+import Container from '@material-ui/core/Container'
+
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
+
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/core/Menu'
 
 const useStyles = makeStyles ({
   root:{
@@ -25,6 +36,12 @@ const useStyles = makeStyles ({
 })
 
 const theme = createMuiTheme({
+  typography:{
+    h4:{
+      fontSize:18,
+      marginBottom:15
+    }
+  },
   palette:{
     primary:{
       main:green[400]
@@ -63,9 +80,41 @@ function CheckboxExample(){
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <Container maxWidth='sm'>
     <div className="App">
       <header className="App-header">
+        <AppBar color="secondary">
+          <Toolbar>
+            <IconButton>
+              <MenuIcon/>
+              </IconButton>
+              <Typography variant="h6">
+                MUI Theming
+              </Typography>
+              <Button>
+                Login
+              </Button> 
+          </Toolbar>
+        </AppBar>
+        <Typography variant='h4' component="div">
+          Welcome to MUI
+        </Typography>
+        <Typography variant='body1'>
+          Learning How To Use Material Ui
+        </Typography>
         <ButtonStyled/>
+
+        <Grid container spacing={4} justify="center">
+          <Grid item xs={3} sm={6}>
+            <Paper style={{height:75, width:100,}}/>
+          </Grid>
+            <Grid item xs={3} sm={6}>
+            <Paper style={{height:75, width:100,}}/>
+          </Grid>
+            <Grid item xs={3} lg={12}>
+            <Paper style={{height:75, width:100,}}/>
+          </Grid>
+        </Grid>
         <TextField
           variant='filled'
           color='secondary'
@@ -97,6 +146,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
     </div>
+    </Container>
     </ThemeProvider>
   );
 }
